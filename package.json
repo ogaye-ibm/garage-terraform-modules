@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ibm-garage-cloud/garage-terraform-modules.git"
+    "url": "git+https://github.com/ogaye-ibm/garage-terraform-modules.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ibm-garage-cloud/garage-terraform-modules/issues"
+    "url": "https://github.com/ogaye-ibm/garage-terraform-modules/issues"
   },
-  "homepage": "https://github.com/ibm-garage-cloud/garage-terraform-modules#readme",
+  "homepage": "https://github.com/ogaye-ibm/garage-terraform-modules#readme",
   "devDependencies": {
     "release-it": "^13.0.2"
   }

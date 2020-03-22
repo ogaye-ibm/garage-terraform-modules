@@ -20,9 +20,9 @@ resource "ibm_resource_instance" "cloudant_instance" {
   tags              = var.tags
 
   timeouts {
-    create = "15m"
-    update = "15m"
-    delete = "15m"
+    create = "150m"
+    update = "150m"
+    delete = "150m"
   }
 }
 
@@ -31,10 +31,12 @@ resource "ibm_resource_key" "cloudant_key" {
   role                 = local.role
   resource_instance_id = ibm_resource_instance.cloudant_instance.id
 
+  depends_on = [ibm_resource_instance.cloudant_instance]
+
   //User can increase timeouts
   timeouts {
-    create = "15m"
-    delete = "15m"
+    create = "150m"
+    delete = "150m"
   }
 }
 
@@ -46,6 +48,8 @@ resource "ibm_container_bind_service" "cloudant_binding" {
   namespace_id          = var.namespaces[count.index]
   resource_group_id     = data.ibm_resource_group.tools_resource_group.id
   key                   = ibm_resource_key.cloudant_key.name
+
+  depends_on = [ibm_resource_key.cloudant_key]
 
   // The provider (v16.1) is incorrectly registering that these values change each time,
   // this may be removed in the future if this is fixed.
